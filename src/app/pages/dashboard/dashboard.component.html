@@ -1,0 +1,63 @@
+<app-header></app-header>
+
+<main>
+    <div id="dashboard-title">Dashboard FORD</div>
+
+    <div class="container-dashboard">
+
+        <!-- Passo 8: Card de seleção de modelo -->
+        <div class="card">
+            <label for="vehicle-select">Selecione o modelo:</label>
+            <select id="vehicle-select">
+                <option value="">Carregando modelos...</option>
+            </select>
+        </div>
+
+        <!-- Passo 9: Cards de informações -->
+        <div class="cards-info">
+            <div class="info-card">
+                <h3>Total de Vendas</h3>
+                <p id="sales">-</p>
+            </div>
+            <div class="info-card">
+                <h3>Conectados</h3>
+                <p id="connected">-</p>
+            </div>
+            <div class="info-card">
+                <h3>Software Atualizado</h3>
+                <p id="updated">-</p>
+            </div>
+        </div>
+
+        <!-- Passo 10: Imagem do veículo -->
+        <div class="vehicle-image">
+            <img id="vehicle-image" src="img/mustang.png" alt="Selecione um modelo para visualizar">
+        </div>
+
+        <!-- Passo 11: Tabela com busca -->
+        <div class="table-section">
+            <div class="search-bar">
+                <input type="text" id="vin-search" placeholder="Buscar por código VIN (ex: 2FRHDUYS2Y63NHD22454)">
+                <button id="search-btn">Buscar</button>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código VIN</th>
+                        <th>Odômetro</th>
+                        <th>Nível de Combustível</th>
+                        <th>Status</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                    </tr>
+                </thead>
+                <tbody id="vehicle-data">
+                    <tr><td colspan="6">Nenhum dado encontrado.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+<footer></footer>
