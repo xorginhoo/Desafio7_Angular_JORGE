@@ -1,0 +1,84 @@
+<app-header></app-header>
+
+<div class="dashboard-container">
+  <header class="header">
+    <h1>Dashboard FORD</h1>
+  </header>
+
+  <main class="main-content">
+
+    <!-- Cards -->
+    <section class="cards">
+      <div class="card">
+        <section class="vehicle-selector">
+          <h3>Veículo</h3>
+
+          <select #carSelect id="vehicle" (change)="onSelectVehicle()">
+            <option *ngFor="let vehicle of vehicles" [value]="vehicle.id">
+              {{ vehicle.vehicle }}
+            </option>
+          </select>
+          
+        </section>
+      </div>
+
+      <div class="card">
+        <h3>Total de Vendas</h3>
+        <p *ngIf="selectedVehicle">{{ selectedVehicle.volumetotal }} Unid.</p>
+      </div>
+
+      <div class="card">
+        <h3>Conectados</h3>
+        <p *ngIf="selectedVehicle">{{ selectedVehicle.connected }} Unid.</p>
+      </div>
+
+      <div class="card">
+        <h3>Update Software</h3>
+        <p *ngIf="selectedVehicle">{{ selectedVehicle.softwareUpdates }} Unid.</p>
+      </div>
+    </section>
+
+    <!-- Imagem do veículo -->
+    <section class="vehicle-image">
+      <img [src]="selectedVehicleImage" [alt]="selectedVehicle?.name" />
+    </section>
+
+    <!-- Busca VIN + tabela -->
+    <section class="vehicle-data">
+      <div class="table-search">
+        <input
+          type="text"
+          placeholder="Buscar por código VIN"
+          [(ngModel)]="searchTerm"
+          (input)="filtrarPorVin()"
+        />
+      </div>
+
+      <table class="data-table" *ngIf="filteredVehicles.length > 0">
+        <thead>
+          <tr>
+            <th>Código - VIN</th>
+            <th>Odômetro</th>
+            <th>Nível de Combustível</th>
+            <th>Status</th>
+            <th>Lat.</th>
+            <th>Long.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let v of filteredVehicles">
+            <td>{{ v.codigo }}</td>
+            <td>{{ v.odometro }}</td>
+            <td>{{ v.nivelCombustivel }}</td>
+            <td>{{ v.status }}</td>
+            <td>{{ v.lat }}</td>
+            <td>{{ v.long }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p *ngIf="filteredVehicles.length === 0 && searchTerm">Nenhum resultado encontrado.</p>
+    </section>
+  </main>
+</div>
+

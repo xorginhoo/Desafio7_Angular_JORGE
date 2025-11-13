@@ -1,0 +1,47 @@
+<main class="container">
+    <section class="login-left">
+        <img src="ranger.png" width="700" alt="Ford Ranger" />
+    </section>
+
+    <section class="login-right">
+        <div id="logo-ford-login">
+            <img src="ford.png" width="220" alt="Logo Ford" />
+        </div>
+
+        <div id="login-title">
+            <h3>Boas-vindas</h3>
+        </div>
+
+        <form (ngSubmit)="login()">
+
+            <div class="campo-input">
+                <i class="fa-regular fa-user"></i>
+                <input type="text" placeholder="Insira seu e-mail" [(ngModel)]="username" name="username" required />
+            </div>
+
+            <div class="campo-input">
+                <i class="fa-solid fa-lock"></i>
+                <input [type]="showPassword ? 'text' : 'password'" placeholder="Insira sua senha" [(ngModel)]="password" name="password" required />
+                <i class="fa-regular" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'" (click)="togglePasswordVisibility()"></i>
+            </div>
+
+            <div class="options-container">
+                <div class="auto-login">
+                    <input type="checkbox" [(ngModel)]="autoLogin" name="autoLogin" id="autoLogin" />
+                    <label for="autoLogin">Logar automaticamente</label>
+                </div>
+                
+                <div class="show-password">
+                    <input type="checkbox" [(ngModel)]="showPassword" name="showPassword" id="showPassword" />
+                    <label for="showPassword">Mostrar senha</label>
+                </div>
+            </div>
+
+            <button type="submit">Entrar</button>
+        </form>
+
+        <div *ngIf="messageType" class="message" [ngClass]="messageType">
+            {{ message }}
+        </div>
+    </section>
+</main>
